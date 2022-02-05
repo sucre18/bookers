@@ -55,3 +55,9 @@ p {
 .bottan {
   font-size: 13px;
 }
+
+#notice {
+  font-size: 13px;
+  color: #008000;
+  margin: 33px;
+}

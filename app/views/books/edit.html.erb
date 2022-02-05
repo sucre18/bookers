@@ -1,4 +1,10 @@
 <div class="edit">
+  
+  <%if flash[:notice] %>
+    <p id="notice">
+    <%= flash[:notice] %>
+    </p>
+  <% end %>
   <h1>Editing Book</h1>
   <%= form_with model: @book, local:true do |book| %>
   <div class="form">
@@ -22,4 +28,5 @@
     <%= link_to "Back", index_book_path %>
   </span>
 </div>
+
 
