@@ -1,23 +1,37 @@
 <div class="edit">
-  
+
   <%if flash[:notice] %>
     <p id="notice">
     <%= flash[:notice] %>
     </p>
   <% end %>
   <h1>Editing Book</h1>
+
   <%= form_with model: @book, local:true do |book| %>
-  <div class="form">
-    <label>Title</label>
-    <%= book.text_field :title %>
-  </div>
-  <div class="form">
-    <label>Body</label>
-    <%= book.text_area :body %>
-  </div>
-  <div class="form">
-    <%= book.submit 'Update Book' %>
-  </div>
+    <% if @book.errors.any? %>
+      <div id="error">
+        <h2 id="error-message">
+        <%= @book.errors.count %>error prohibited this book from being saved:
+        </h2>
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form">
+      <label>Title</label>
+      <%= book.text_field :title %>
+    </div>
+    <div class="form">
+      <label>Body</label>
+      <%= book.text_area :body %>
+    </div>
+    <div class="form">
+      <%= book.submit 'Update Book' %>
+    </div>
   <% end %>
 
   <span class="bottan">
